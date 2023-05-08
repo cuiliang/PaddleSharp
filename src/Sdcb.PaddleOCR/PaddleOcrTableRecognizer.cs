@@ -76,6 +76,10 @@ public class PaddleOcrTableRecognizer : IDisposable
         using Mat resized = MatResize(src, MaxEdgeSize);
         using Mat normalized = Normalize(resized);
         using Mat padded = MatPadingTo(normalized, MaxEdgeSize);
+
+        Cv2.ImShow("padded", padded);
+        Cv2.WaitKey();
+
         return ExtractMat(padded);
 
         static Mat MatResize(Mat src, int maxSize)
